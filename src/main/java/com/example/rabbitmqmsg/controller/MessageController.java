@@ -19,8 +19,8 @@ public class MessageController {
     ReceiverService receiverService;
 
     @RequestMapping("/sendMsg")
-    public String sendMsg(@RequestBody MessageModel messageModel){
-        rabbitMQSender.sendMsg(messageModel);
+    public String sendMsg(@RequestBody MessageModel messageModel, @RequestParam String exchange, @RequestParam String routingKey){
+        rabbitMQSender.sendMsg(messageModel, exchange, routingKey);
         return "Msg sent";
     }
     @RequestMapping("/receiveMsg")

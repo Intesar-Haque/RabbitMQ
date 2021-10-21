@@ -13,19 +13,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConf {
 
-
-    @Value("${rabbitmqmsg.rabbitmq.queue}")
-    String queueName;
-
-    @Value("${rabbitmqmsg.rabbitmq.exchange}")
-    String exchange;
-
-    @Value("${rabbitmqmsg.rabbitmq.routingkey}")
-    private String routingkey;
+    String exchange="sendUsers";
+    String queue = "user";
+    String routingKey="sendUsers";
 
     @Bean
     Queue queue() {
-        return new Queue(queueName, false);
+        return new Queue(queue, false);
     }
 
     @Bean
@@ -35,7 +29,7 @@ public class RabbitMQConf {
 
     @Bean
     Binding binding(Queue queue, DirectExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(routingkey);
+        return BindingBuilder.bind(queue).to(exchange).with(routingKey);
     }
 
     @Bean

@@ -13,16 +13,8 @@ public class SenderServiceImpl implements SenderService {
     @Autowired
     private AmqpTemplate rabbitTemplate;
 
-    @Value("${rabbitmqmsg.rabbitmq.exchange}")
-    private String exchange;
-
-    @Value("${rabbitmqmsg.rabbitmq.routingkey}")
-    private String routingkey;
-
-
     @Override
-    public void sendMsg(MessageModel message) {
-        rabbitTemplate.convertAndSend(exchange, routingkey, message);
-        System.out.println(message.getName()+" sent: " + message.getMsg());
+    public void sendMsg(MessageModel message, String exchange, String routingKey) {
+        rabbitTemplate.convertAndSend(exchange, routingKey, message);
     }
 }
