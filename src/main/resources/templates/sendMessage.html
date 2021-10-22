@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <div th:replace="common :: header"></div>
+</head>
+<body class="table-dark">
+<header>
+    <nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top">
+        <div th:replace="common :: navigation"></div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class=" form-inline mr-auto" >
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a th:href="@{/admin/message}" class="nav-link">Send Messages</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a th:href="@{/logout}" class="nav-link">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<br><br><br><br>
+<!--/*@thymesVar id="message" type="com.example.rabbitmqmsg.model.MessageModel"*/-->
+<form  th:action="@{/admin/message/send}" th:object="${message}" method="post">
+    <h3 class="text-center">Create Message</h3>
+    <div class="container mt-2 ">
+        <div class="form-group">
+            <label>Send To</label>
+            <!--suppress ThymeleafVariablesResolveInspection -->
+            <select th:field="*{exchange}" class="form-control">
+                <option selected th:value="'EVERYONE'">Everyone</option>
+                <option th:value="'CUSTOMER'">Customers</option>
+                <option th:value="'MERCHANT'">Merchants</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" th:field="*{title}" placeholder="Title">
+        </div>
+        <div class="form-group">
+            <label>Body</label>
+            <textarea class="form-control" th:field="*{body}" placeholder="Message" rows="3"></textarea>
+        </div>
+        <div class="container text-center"><button type="submit" class="btn btn-primary">Send</button></div>
+    </div>
+</form>
+</body>
+</html>

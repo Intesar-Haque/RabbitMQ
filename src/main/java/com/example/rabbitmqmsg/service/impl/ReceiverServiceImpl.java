@@ -1,5 +1,7 @@
 package com.example.rabbitmqmsg.service.impl;
 
+import com.example.rabbitmqmsg.model.MessageModel;
+import com.example.rabbitmqmsg.model.dto.MessageModelDto;
 import com.example.rabbitmqmsg.service.ReceiverService;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +18,14 @@ public class ReceiverServiceImpl implements ReceiverService {
     private AmqpTemplate rabbitTemplate;
 
     @Override
-    public List<Object> receiveMsg(String queue) {
-        List<Object> msgs = new ArrayList<>();
-        Object obj;
-        obj = rabbitTemplate.receiveAndConvert(queue);
+    public List<MessageModelDto> receiveMsg(String queue) {
+        List<MessageModelDto> msgs = new ArrayList<>();
+        MessageModelDto obj;
+        obj = (MessageModelDto) rabbitTemplate.receiveAndConvert(queue);
         while(Objects.nonNull(obj)){
+
             msgs.add(obj);
-            obj = rabbitTemplate.receiveAndConvert(queue);
+            obj = (MessageModelDto) rabbitTemplate.receiveAndConvert(queue);
         }
         return msgs;
     }

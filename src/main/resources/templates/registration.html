@@ -1,0 +1,48 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <div th:replace="common :: header"></div>
+</head>
+<body class="table-dark">
+<header>
+<nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top">
+    <div th:replace="common :: navigation"></div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class=" form-inline mr-auto" ></div>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a th:href="@{loggedIn}" class="nav-link">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</header>
+<br><br><br><br>
+<!--/*@thymesVar id="usersDto" fields name, uname , pass"*/-->
+<form  th:action="@{registration/register}" th:object="${usersDto}" method="post">
+    <h3 class="text-center">Registration</h3>
+    <div class="container mt-2 ">
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" id="inputName" th:field="*{name}" placeholder="Enter Name">
+        </div>
+        <div class="form-group">
+            <label for="inputUname">Username</label>
+            <input type="text" class="form-control" id="inputUname" th:field="*{uname}" placeholder="Enter Username">
+        </div>
+        <div class="form-group">
+            <label for="InputPassword1">Password</label>
+            <input type="password" class="form-control" id="InputPassword1" th:field="*{pass}" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label>I am a </label>
+            <select th:field="*{role}" class="form-control">
+                <option selected th:value="'CUSTOMER'">Customer</option>
+                <option th:value="'MERCHANT'">Merchant</option>
+            </select>
+        </div>
+        <div class="container text-center"><button type="submit" class="btn btn-primary">SignUp</button></div>
+    </div>
+</form>
+</body>
+</html>

@@ -22,6 +22,6 @@ public class SenderServiceImpl implements SenderService {
     @Override
     public void sendMsg(MessageModel messageModel, String uname) {
         MessageModelDto message = new MessageModelDto(messageModel.getTitle(), messageModel.getBody());
-        rabbitTemplate.convertAndSend(messageModel.getExchange(), messageModel.getRoutingKey(), message);
+        rabbitTemplate.convertAndSend(messageModel.getExchange(), "", message);
     }
 }
