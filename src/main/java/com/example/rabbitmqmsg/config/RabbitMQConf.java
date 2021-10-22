@@ -13,9 +13,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConf {
 
-    String exchange="sendUsers";
-    String queue = "user";
-    String routingKey="sendUsers";
+    String exchange="EVERYONE";
+    String queue = "intesar";
+    String routingKey="";
 
     @Bean
     Queue queue() {
