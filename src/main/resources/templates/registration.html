@@ -3,10 +3,14 @@
 <head>
     <div th:replace="common :: header"></div>
 </head>
-<body class="table-dark">
+<body class="body-color">
+
 <header>
-<nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top">
-    <div th:replace="common :: navigation"></div>
+<nav class="navbar navbar-expand-xl navbar-dark nav-color fixed-top">
+    <a class="navbar-brand " th:href="@{/}">RabbitMQ</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class=" form-inline mr-auto" ></div>
         <ul class="navbar-nav">
@@ -41,7 +45,7 @@
                 <option th:value="'MERCHANT'">Merchant</option>
             </select>
         </div>
-        <div class="container text-center"><button type="submit" class="btn btn-primary">SignUp</button></div>
+        <div class="container text-center"><button type="submit" class="btn btn-lg bg-color">Register</button></div>
     </div>
 </form>
 </body>

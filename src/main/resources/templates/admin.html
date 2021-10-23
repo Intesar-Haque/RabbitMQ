@@ -3,18 +3,15 @@
 <head>
     <div th:replace="common :: header"></div>
 </head>
-<body class="table-dark">
+<body class="body-color">
 <header>
-<nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top">
-    <div th:replace="common :: navigation"></div>
+<nav class="navbar navbar-expand-xl nav-color navbar-dark fixed-top">
+    <a class="navbar-brand " th:href="@{/}">RabbitMQ</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class=" form-inline mr-auto" >
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                <a th:href="@{admin/message}" class="nav-link">Send Messages</a>
-                </li>
-            </ul>
-        </div>
+        <div class=" form-inline mr-auto"></div>
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a th:href="@{/logout}" class="nav-link">Logout</a>
@@ -23,5 +20,14 @@
     </div>
 </nav>
 </header>
+<br><br>
+<main class="container mt-5">
+    <div class="jumbotron">
+        <h1>Admin page</h1>
+        <p class="lead">This is admin page, admin can send messages</p>
+        <br>
+        <a class="btn btn-lg bg-color" th:href="@{admin/message}" role="button">Send Message</a>
+    </div>
+</main>
 </body>
 </html>

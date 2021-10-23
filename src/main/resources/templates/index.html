@@ -3,10 +3,13 @@
 <head>
     <div th:replace="common :: header"></div>
 </head>
-<body class="table-dark">
-<header>
-    <nav class="navbar navbar-expand-xl bg-dark navbar-dark fixed-top">
-        <div th:replace="common :: navigation"></div>
+<body class="body-color">
+<header class="border-bottom">
+    <nav class="navbar navbar-expand-xl nav-color navbar-dark fixed-top">
+        <a class="navbar-brand " th:href="@{/}">RabbitMQ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class=" form-inline mr-auto" ></div>
             <ul class="navbar-nav">
@@ -20,6 +23,15 @@
         </div>
     </nav>
 </header>
-<br><br><br><br>
+<br><br>
+<main class="container mt-5">
+    <div class="jumbotron">
+        <h1>Home Page</h1>
+        <p class="lead">Please login or register to continue</p>
+        <br>
+        <a class="btn btn-lg bg-color" th:href="@{loggedIn}" role="button">Login</a>
+        <a class="btn btn-lg bg-color d-inline" th:href="@{/registration}" role="button">Register</a>
+    </div>
+</main>
 </body>
 </html>
